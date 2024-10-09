@@ -22,7 +22,7 @@ Spookify es una plataforma interactiva que permite a los usuarios subir imágene
    git clone https://github.com/tu-usuario/spookify.git
 2. Navega a la carpeta del proyecto:
 	```bash
-	cd spookify`
+	cd cloudinary-hackathon`
 3. Instala las dependencias:
 	```bash
 	pnpm install
