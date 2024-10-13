@@ -1,7 +1,7 @@
 import { useState } from "react";
-import MenuIcon from "./MenuIcon";
-import CloseIcon from "./CloseIcon";
-import { links } from "@src/utils/consts";
+import MenuIcon from "@/components/MenuIcon";
+import CloseIcon from "@/components/CloseIcon";
+import { links } from "@/utils/consts";
 
 function NavBar() {
   const [isActive, setIsActive] = useState(false);

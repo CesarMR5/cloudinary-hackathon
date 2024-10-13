@@ -1,6 +1,28 @@
 ---
-import Layout from '@src/layouts/Layout.astro';
+import Layout from '@/layouts/Layout.astro';
 ---
 
 <Layout title="Spookify | Inicio">
+  <h2 class="text-2xl md:text-3xl lg:text-4xl font-bold text-amber-700 text-">
+    Convierte tus imagenes en obras aterradoras
+  </h2>
+  <p class="text-lg md:text-xl mt-4 text-orange-300 font-medium text-center">
+    Usa el poder de la Inteligencia Artificial para convertir tus fotos en algo terrorificamente genial
+  </p>
 </Layout>
+
+<style>
+  h2 {
+    text-shadow: 2px 2px 8px rgb(190, 242, 100, 0.3);
+    animation: spookyGlow 2.0s ease-in-out infinite;
+  }
+
+  @keyframes spookyGlow {
+    0%, 100% {
+      text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8), 0 0 10px #ff7f50, 0 0 15px #ff7f50;
+    }
+    50% {
+      text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8), 0 0 20px #ff4500, 0 0 30px #ff4500;
+    }
+  }
+</style>
