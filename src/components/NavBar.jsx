@@ -6,14 +6,14 @@ import { links } from "@/utils/consts";
 function NavBar() {
   const [isActive, setIsActive] = useState(false);
   return (
-    <nav className="md:w-auto">
+    <nav className="lg:w-auto">
       <div
         onClick={() => setIsActive(!isActive)}
-        className="md:hidden flex justify-center">
+        className="lg:hidden flex justify-center">
         {!isActive ? <MenuIcon /> : <CloseIcon />}
       </div>
       <div
-        className={`md:flex flex flex-col md:flex-row justify-between items-center ${
+        className={`lg:flex flex flex-col lg:flex-row justify-between items-center ${
           isActive ? "block" : "hidden"
         }`}>
         {links.map(({ url, text }) => (

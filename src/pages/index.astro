@@ -1,14 +1,55 @@
 ---
+import FeatureCard from '@/components/FeatureCard.astro';
 import Layout from '@/layouts/Layout.astro';
 ---
 
 <Layout title="Spookify | Inicio">
-  <h2 class="text-2xl md:text-3xl lg:text-4xl font-bold text-amber-700 text-">
-    Convierte tus imagenes en obras aterradoras
-  </h2>
-  <p class="text-lg md:text-xl mt-4 text-orange-300 font-medium text-center">
-    Usa el poder de la Inteligencia Artificial para convertir tus fotos en algo terrorificamente genial
-  </p>
+  <section class="flex flex-col justify-center items-center mx-auto">
+    <h2 class="text-2xl lg:text-3xl lg:text-4xl font-bold text-amber-700 text-center">
+      Convierte tus imagenes en obras aterradoras
+    </h2>
+    <p class="text-lg lg:text-xl mt-4 text-orange-300 font-medium text-center">
+      Usa el poder de la Inteligencia Artificial para convertir tus fotos en algo terrorificamente genial
+    </p>
+  </section>
+
+
+  <!-- TODO -->
+  <!--
+
+    2. Sección de Funcionalidades
+    Aquí puedes dividir las funcionalidades clave de tu aplicación. Cada funcionalidad debe tener:
+
+    Un título corto (Ej. "Filtros temáticos de Halloween", "Transformación de personajes", etc.).
+    Una breve descripción que explique qué hace la funcionalidad.
+    Imagen o GIF de ejemplo: Muestra un antes y después o ejemplos de lo que puede hacer esa funcionalidad.
+    Ejemplo de contenido para esta sección:
+
+    Filtros espeluznantes: Aplica efectos de Halloween a tus imágenes, como niebla misteriosa, sombras fantasmales y más.
+    [Imagen de ejemplo: Antes y después de aplicar filtros "spooky"]
+    Transformación de rostros: Convierte personas en zombis, vampiros o criaturas espeluznantes con IA.
+    [Imagen de ejemplo: Persona antes y después de la transformación a zombi]
+    Escenarios terroríficos: Coloca tus imágenes en fondos temáticos como cementerios, castillos o bosques oscuros.
+    [Imagen de ejemplo: Imagen normal colocada en un fondo de cementerio]
+
+  -->
+  <section class="flex flex-col justify-center items-center mx-auto p-4 w-5/6">
+    <FeatureCard 
+      title='Filtros Escalofriantes'
+      description='Dale a tus imagenes un toque escalofiante y unico con el uso de filtros increibles.'
+      link='./filters'
+    />
+    <FeatureCard 
+      title='Transformaciones Monstruosas'
+      description='Transformate a ti, tus amigos, o todas las personas de tus fotos en criaturas escalofriantes.'
+      link='./transform'
+    />
+    <FeatureCard 
+      title='Fondos Espeluznantes'
+      description='Transforma todo a tu alrededor en fondos llenos de monstruos, zombies, lugares horripilantes, y muchas cosas mas.'
+      link='./background'
+    />
+  </section>
 </Layout>
 
 <style>
