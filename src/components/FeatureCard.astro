@@ -3,9 +3,10 @@ interface Props {
   title: string;
   description: string;
   link: string
+  image: string
 }
 
-const { title, description, link } = Astro.props
+const { title, description, link, image } = Astro.props
 ---
 
 <article class="lg:grid lg:grid-cols-2 mt-5 lg:mt-10 justify-center items-center mx-auto gap-4">
@@ -16,8 +17,8 @@ const { title, description, link } = Astro.props
   <!-- Aqui iran dos imagenes -->
   <div class="lg:w-auto mt-4">
     <two-up>
-      <img src="https://res.cloudinary.com/die9r7flu/image/upload/rcgrxuxlibwe6e6hiiyl.jpg" alt="">
-      <img src="https://res.cloudinary.com/die9r7flu/image/upload/e_gen_background_replace:prompt_a%20scary%20background%20full%20of%20zombies/rcgrxuxlibwe6e6hiiyl.jpg" alt="">
+      <img src=`img/${image}-original.jpg` alt="Imagen Original">
+      <img src=`img/${image}.jpg` alt="Imagen Editada">
     </two-up>
     <div class="mt-4"></div>
     <a href={link} class="p-2 rounded-lg bg-slate-600 font-bold hover:bg-slate-700 transition ease-in-out block text-center w-full md:w-1/2 lg:w-1/4">Probar ahora</a>
