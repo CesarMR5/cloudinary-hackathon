@@ -1,4 +1,12 @@
 ---
+import { Image } from 'astro:assets';
+import transformOriginal from '@/assets/transform-original.jpg'
+import transformTransformed from '@/assets/transform.jpg'
+import totalOriginal from '@/assets/total-original.jpg'
+import totalTransformed from '@/assets/total.jpg'
+import backgroundOriginal from '@/assets/background-original.jpg'
+import backgroundTransformed from '@/assets/background.jpg'
+
 interface Props {
   title: string;
   description: string;
@@ -6,7 +14,21 @@ interface Props {
   image: string
 }
 
+const originalImages: Record<string, ImageMetadata> = {
+  transform: transformOriginal,
+  total: totalOriginal,
+  background: backgroundOriginal,
+};
+
+const transformedImages: Record<string, ImageMetadata> = {
+  transform: transformTransformed,
+  total: totalTransformed,
+  background: backgroundTransformed,
+};
+
 const { title, description, link, image } = Astro.props
+const i = originalImages[image];
+const j = transformedImages[image];
 ---
 
 <article class="lg:grid lg:grid-cols-2 mt-5 lg:mt-10 justify-center items-center mx-auto gap-4">
@@ -17,8 +39,8 @@ const { title, description, link, image } = Astro.props
   <!-- Aqui iran dos imagenes -->
   <div class="lg:w-auto mt-4">
     <two-up>
-      <img src=`img/${image}-original.jpg` alt="Imagen Original">
-      <img src=`img/${image}.jpg` alt="Imagen Editada">
+      <Image src={i} alt="Imagen Original" />
+      <Image src={j} alt="Imagen Editada" />
     </two-up>
     <div class="mt-4"></div>
     <a href={link} class="p-2 rounded-lg bg-slate-600 font-bold hover:bg-slate-700 transition ease-in-out block text-center w-full md:w-1/2 lg:w-1/4">Probar ahora</a>
