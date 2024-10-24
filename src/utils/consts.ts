@@ -40,3 +40,18 @@ export const cardInfo = [
     image: "total",
   },
 ];
+
+export const topics = [
+  {
+    title: "Zombies!!!",
+    aiPrompt: ["all the people", "scary zombies"],
+  },
+  {
+    title: "Buuu!!! Fantasmas",
+    aiPrompt: ["all the people", "scary ghosts"],
+  },
+  {
+    title: "Diablos!!!",
+    aiPrompt: ["all the people", "scary devils"],
+  },
+];

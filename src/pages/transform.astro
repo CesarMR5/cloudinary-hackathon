@@ -1,5 +1,6 @@
 ---
 import Layout from "@/layouts/Layout.astro";
+import { CldUploadWidget } from "astro-cloudinary";
 ---
 
 <Layout title="Spookify | Transformar Personas">
@@ -7,6 +8,95 @@ import Layout from "@/layouts/Layout.astro";
     Transformate a ti y a tus amigos en criaturas aterradoras!
   </h2>
   <p class="text-lg lg:text-xl mt-4 text-orange-300 font-medium text-center">
-    Zombies, Fantasmas, Demonios... Usa el poder de la inteligencia artificial y dale un toque unico a tus imágenes
+    Zombies, Fantasmas, Demonios... Usa el poder de la inteligencia artificial y dale un toque unico a tus imagenes
   </p>
+
+  <div class="flex flex-col justify-center items-center p-4 my-10">
+    <p class="text-lg lg:text-xl mt-4 text-orange-300 font-medium text-center">Comienza seleccionando una imagen de tus archivos</p>
+    <CldUploadWidget 
+      id="upload-events"
+      uploadPreset="spookify-hackathon"
+      options={{
+        sources: ["local"],
+        multiple: false,
+        maxFiles: 1,
+        language: "es",
+        text: {
+          es: {
+            or: "O",
+            menu: {
+              files: "Mis archivos"
+            },
+            local: {
+              dd_title_single: "Selecciona o arrastra tu imagen aqui",
+              browse: "Buscar"
+            }
+          }
+        },
+      }}
+    >
+      <button id="select" class="p-2 bg-amber-700 text-white font-bold capitalize rounded-lg my-10">
+        Seleccionar
+      </button>
+    </CldUploadWidget>
+    <div id="data" class="max-w-full w-full flex flex-col justify-center items-center mx-auto">
+      <div id="id" class="flex justify-center w-auto gap-2"></div>
+    </div>
+  </div>
 </Layout>
+
+<script>
+  import { getCldImageUrl, } from "astro-cloudinary/helpers";
+  import { topics } from "@/utils/consts"
+
+  const widget = document.querySelector('#upload-events');
+  const divData = document.querySelector('#data') as HTMLDivElement
+  const divButtons = document.querySelector('#id') as HTMLDivElement
+  const selectButton = document.querySelector('#select') as HTMLButtonElement
+
+  const updateHTML = (imageUrl: string, imageId = '') => {
+    const a = document.createElement('a') as HTMLAnchorElement
+    const image = document.createElement('img') as HTMLImageElement
+    let transformedImageUrl: string
+
+    selectButton.disabled = true
+    if (selectButton.disabled) selectButton.classList.add('disabled:bg-slate-500')
+
+    image.src = imageUrl
+    image.alt = "Imagen"
+    image.classList.add('w-full', 'h-full', 'md:w-3/4', 'md:h-3/4', 'rounded-xl')
+
+    topics.forEach(topic => {
+      const button = document.createElement('button') as HTMLButtonElement;
+      button.classList.add('p-2', 'bg-amber-700', 'text-white', 'font-bold', 'capitalize', 'rounded-lg', 'my-10')
+      button.innerText = topic.title
+
+      button.addEventListener('click', () => {
+        transformedImageUrl = getCldImageUrl({
+          src: imageId,
+          replace: topic.aiPrompt,
+        })
+
+        image.src = transformedImageUrl
+        image.alt = "Imagen transformada"
+        a.href = transformedImageUrl
+        a.text = "Descargar imagen"
+        a.target = 'blank'
+      })
+
+      divButtons.appendChild(button)
+    })
+
+    divData.appendChild(image)
+    divData.appendChild(a)
+  }
+
+  if ( widget ) {
+    widget.addEventListener('clduploadwidget:success', ((e: CustomEvent<{ info: {public_id: string} } >) => {
+      const imageId: string = e.detail.info.public_id;
+      const imageUrl: string = getCldImageUrl({src: imageId})
+
+      if (imageUrl) updateHTML(imageUrl, imageId)
+    }) as EventListener);
+  }
+</script>
