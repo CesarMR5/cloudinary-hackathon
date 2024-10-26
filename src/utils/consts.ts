@@ -55,3 +55,18 @@ export const topics = [
     aiPrompt: ["all the people", "scary devils"],
   },
 ];
+
+export const backgroundTopics = [
+  {
+    title: "Lugares Aterradores!!!",
+    aiPrompt: "Spooky background",
+  },
+  {
+    title: "Monstruos espeluznantes!!!",
+    aiPrompt: "Scary monsters",
+  },
+  {
+    title: "Grr!!! Zombies!!!",
+    aiPrompt: "Scary zombies",
+  },
+];
